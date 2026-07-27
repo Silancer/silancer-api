@@ -2,7 +2,8 @@
   "name": "silencer-api",
   "type": "module",
   "scripts": {
-    "start": "bun run main.ts",
+    "dev": "bun --watch src/server.ts",
+    "start": "bun src/server.ts",
     "typecheck": "tsc"
   },
   "devDependencies": {
