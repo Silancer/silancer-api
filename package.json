@@ -2,15 +2,27 @@
   "name": "silencer-api",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch src/server.ts",
-    "start": "bun src/server.ts",
-    "typecheck": "tsc"
+    "dev": "bun --env-file=.env.local --watch src/server.ts",
+    "dev:server": "bun --env-file=.env.development src/server.ts",
+    "start": "bun --env-file=.env.production src/server.ts",
+    "typecheck": "tsc",
+    "db:generate": "bunx drizzle-kit generate",
+    "db:migrate": "bunx drizzle-kit migrate",
+    "db:push": "bunx drizzle-kit push",
+    "db:studio": "bunx drizzle-kit studio",
+    "db:seed": "bun run src/database/seeds/index.ts",
+    "db:reset": "bun run scripts/db-reset.ts",
+    "db:fresh": "bun run scripts/db-fresh.ts",
+    "db:setup": "bun run scripts/db-setup.ts"
   },
   "devDependencies": {
     "@types/bun": "1",
+    "drizzle-kit": "^0.31.10",
     "typescript": "5"
   },
   "dependencies": {
-    "elysia": "1"
+    "drizzle-orm": "^0.45.2",
+    "elysia": "1",
+    "postgres": "^3.4.9"
   }
 }
